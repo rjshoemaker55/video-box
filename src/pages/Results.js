@@ -18,11 +18,13 @@ const Results = (props) => {
           q: pageContent.content.data,
         },
       })
-      .then((res) => res)
+      .then((res) => console.log(res))
       .then((data) => setResultList(data.data.items));
   }, [pageContent]);
 
-  console.log(pageContent);
+  const openVideo = (id) => {
+    console.log(id);
+  };
 
   return (
     <div className='results-wrapper'>
@@ -32,7 +34,11 @@ const Results = (props) => {
         const { channelId, channelTitle, publishedAt, title } = result.snippet;
 
         return (
-          <div className='result-wrapper' key={id}>
+          <div
+            className='result-wrapper'
+            key={id}
+            onClick={(id) => openVideo(id)}
+          >
             <h3>{title}</h3>
             <img src={thumbnail.url} />
             <p>{channelTitle}</p>
