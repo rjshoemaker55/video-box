@@ -7,9 +7,9 @@ export const contentSlice = createSlice({
     data: {},
   },
   reducers: {
-    setPageContent: (component, data) => {
-      state.component = component;
-      state.data = data;
+    setPageContent: (state, action) => {
+      state.component = action.payload.component;
+      state.data = action.payload.data;
     },
   },
 });
