@@ -22,6 +22,9 @@ const Landing = () => {
     // TODO: Verify search query
 
     setMainContent(<Results query={searchQuery} displayVideo={displayVideo} />);
+    useDispatch(
+      setPageContent({ component: 'Results', data: { query: searchQuery } })
+    );
   };
 
   return (
@@ -36,7 +39,14 @@ const Landing = () => {
       <button className='search-button' onClick={searchVideos}>
         Search
       </button>
-      {mainContent}
+      {
+        (pageContent.component = 'Results' ? (
+          <Results data={pageContent.data} />
+        ) : (
+          // ! TODO: DONT SEND DATA AS ARGUMENT! GET FROM STORE IN RESULTS COMPONENT
+          ''
+        ))
+      }
     </div>
   );
 };

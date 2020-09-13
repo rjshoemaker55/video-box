@@ -3,6 +3,7 @@ const axios = require('axios');
 
 const Results = (props) => {
   const [resultList, setResultList] = useState([]);
+  const query = props.data.query;
 
   useEffect(() => {
     axios
@@ -11,7 +12,7 @@ const Results = (props) => {
           key: 'AIzaSyCKXbn-fL4CpKsPY4W4TZ3KVUTrh_5xE7c',
           part: 'snippet',
           type: 'video',
-          q: props.query,
+          q: query,
         },
       })
       .then((res) => res)
