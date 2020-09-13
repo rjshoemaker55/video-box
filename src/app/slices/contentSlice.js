@@ -4,7 +4,7 @@ export const contentSlice = createSlice({
   name: 'content',
   initialState: {
     component: '',
-    data: {},
+    data: '',
   },
   reducers: {
     setPageContent: (state, action) => {

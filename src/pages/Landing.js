@@ -2,30 +2,13 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setPageContent, getPageContent } from '../app/slices/contentSlice';
 import Results from './Results';
-const axios = require('axios');
 
 const Landing = () => {
   const [searchQuery, setSearchQuery] = useState('');
-  const [mainContent, setMainContent] = useState('');
   const pageContent = useSelector(getPageContent);
   const dispatch = useDispatch();
 
-  console.log(pageContent);
-
-  const buildUrl = (query) => {
-    return `https://www.googleapis.com/youtube/v3/search?key=AIzaSyCKXbn-fL4CpKsPY4W4TZ3KVUTrh_5xE7c&part=snippet&q=${query}`;
-  };
-
-  const displayVideo = () => {};
-
-  const searchVideos = () => {
-    // TODO: Verify search query
-
-    setMainContent(<Results query={searchQuery} displayVideo={displayVideo} />);
-    useDispatch(
-      setPageContent({ component: 'Results', data: { query: searchQuery } })
-    );
-  };
+  console.log(pageContent.content);
 
   return (
     <div className='landing-wrapper'>
@@ -36,17 +19,15 @@ const Landing = () => {
         onChange={(e) => setSearchQuery(e.target.value)}
         value={searchQuery}
       />
-      <button className='search-button' onClick={searchVideos}>
+      <button
+        className='search-button'
+        onClick={() =>
+          dispatch(setPageContent({ component: 'Results', data: searchQuery }))
+        }
+      >
         Search
       </button>
-      {
-        (pageContent.component = 'Results' ? (
-          <Results data={pageContent.data} />
-        ) : (
-          // ! TODO: DONT SEND DATA AS ARGUMENT! GET FROM STORE IN RESULTS COMPONENT
-          ''
-        ))
-      }
+      {pageContent.content.component == 'Results' ? <Results /> : ''}
     </div>
   );
 };

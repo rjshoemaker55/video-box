@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPageContent, setPageContent } from '../app/slices/contentSlice';
 const axios = require('axios');
 
 const Results = (props) => {
   const [resultList, setResultList] = useState([]);
-  const query = props.data.query;
+  const pageContent = useSelector(getPageContent);
 
   useEffect(() => {
+    if (!pageContent.content.data) return;
     axios
       .get('https://www.googleapis.com/youtube/v3/search', {
         params: {
           key: 'AIzaSyCKXbn-fL4CpKsPY4W4TZ3KVUTrh_5xE7c',
           part: 'snippet',
           type: 'video',
-          q: query,
+          q: pageContent.content.data,
         },
       })
       .then((res) => res)
       .then((data) => setResultList(data.data.items));
-  }, []);
+  }, [pageContent]);
+
+  console.log(pageContent);
+
   return (
     <div className='results-wrapper'>
       {resultList.map((result) => {
