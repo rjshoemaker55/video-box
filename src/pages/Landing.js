@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setPageContent, getPageContent } from '../app/slices/contentSlice';
+import { setPageContent, getPageContent } from '../redux/slices/contentSlice';
 import Results from './Results';
+import VideoScreen from './VideoScreen';
 
 const Landing = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const pageContent = useSelector(getPageContent);
   const dispatch = useDispatch();
-
-  console.log(pageContent.content);
 
   return (
     <div className='landing-wrapper'>
@@ -27,7 +26,11 @@ const Landing = () => {
       >
         Search
       </button>
-      {pageContent.content.component == 'Results' ? <Results /> : ''}
+      {pageContent.content.component == 'Results' ? (
+        <Results />
+      ) : (
+        pageContent.content.component == 'VideoScreen' && <VideoScreen />
+      )}
     </div>
   );
 };
