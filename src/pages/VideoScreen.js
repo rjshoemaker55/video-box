@@ -8,7 +8,11 @@ const VideoScreen = () => {
 
   console.log(useSelector(getPageContent));
 
-  return <div className='video-screen-wrapper'>video screen</div>;
+  return (
+    <div className='video-screen-wrapper'>
+      <Video />
+    </div>
+  );
 };
 
 export default VideoScreen;
