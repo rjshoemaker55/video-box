@@ -1,16 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getPageContent, setPageContent } from '../redux/slices/contentSlice';
+import React from 'react';
 import Video from '../components/Video';
+import VideoInfo from '../components/VideoInfo';
 
 const VideoScreen = () => {
-  const dispatch = useDispatch();
-
-  console.log(useSelector(getPageContent));
-
   return (
     <div className='video-screen-wrapper'>
       <Video />
+      <VideoInfo />
     </div>
   );
 };

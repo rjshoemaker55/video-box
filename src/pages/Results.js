@@ -27,7 +27,12 @@ const Results = (props) => {
   }, [pageContent]);
 
   const openVideo = (id) => {
-    dispatch(setPageContent({ component: 'VideoScreen', data: id }));
+    dispatch(
+      setPageContent({
+        component: 'VideoScreen',
+        data: resultList.filter((result) => result.id.videoId === id)[0],
+      })
+    );
   };
 
   return (
@@ -35,7 +40,7 @@ const Results = (props) => {
       {resultList.map((result) => {
         const videoId = result.id.videoId;
         const thumbnail = result.snippet.thumbnails.default;
-        const { channelId, channelTitle, publishedAt, title } = result.snippet;
+        const { channelTitle, title } = result.snippet;
 
         return (
           <div
@@ -45,7 +50,7 @@ const Results = (props) => {
           >
             <h3>{videoId}</h3>
             <h3>{title}</h3>
-            <img src={thumbnail.url} />
+            <img src={thumbnail.url} alt={`Thumbnail for ${title}.`} />
             <p>{channelTitle}</p>
           </div>
         );

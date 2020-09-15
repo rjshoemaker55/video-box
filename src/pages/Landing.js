@@ -26,10 +26,10 @@ const Landing = () => {
       >
         Search
       </button>
-      {pageContent.content.component == 'Results' ? (
+      {pageContent.content.component === 'Results' ? (
         <Results />
       ) : (
-        pageContent.content.component == 'VideoScreen' && <VideoScreen />
+        pageContent.content.component === 'VideoScreen' && <VideoScreen />
       )}
     </div>
   );
