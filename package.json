@@ -17,14 +17,10 @@
     "redux": "^4.0.5",
     "redux-devtools": "^3.7.0"
   },
-  "devDependencies": {
-    "chai": "*",
-    "mocha": "*"
-  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "mocha",
+    "test": "cd src && mocha",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

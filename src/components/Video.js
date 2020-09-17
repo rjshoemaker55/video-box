@@ -4,6 +4,7 @@ import { getPageContent } from '../redux/slices/contentSlice';
 
 const Video = () => {
   const video = useSelector(getPageContent).content.data;
+  console.log(video);
 
   return (
     <div className='video-wrapper'>
