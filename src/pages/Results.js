@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getPageContent, setPageContent } from '../redux/slices/contentSlice';
 import { mockResults } from '../mockResults';
+import Result from '../components/Result';
 const axios = require('axios');
 
 const Results = (props) => {
@@ -37,24 +38,16 @@ const Results = (props) => {
 
   return (
     <div className='results-wrapper'>
-      {resultList.map((result) => {
-        const videoId = result.id.videoId;
-        const thumbnail = result.snippet.thumbnails.default;
-        const { channelTitle, title } = result.snippet;
-
-        return (
-          <div
-            className='result-wrapper'
-            key={videoId}
-            onClick={() => openVideo(videoId)}
-          >
-            <h3>{videoId}</h3>
-            <h3>{title}</h3>
-            <img src={thumbnail.url} alt={`Thumbnail for ${title}.`} />
-            <p>{channelTitle}</p>
-          </div>
-        );
-      })}
+      {resultList.map((result) => (
+        <Result
+          key={result.id.videoId}
+          videoId={result.id.videoId}
+          thumbnail={result.snippet.thumbnails.default}
+          channelTile={result.snippet.channelTile}
+          title={result.snippet.title}
+          openVideo={openVideo}
+        />
+      ))}
     </div>
   );
 };

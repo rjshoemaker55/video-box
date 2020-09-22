@@ -16,6 +16,7 @@ const Video = () => {
         height='360'
         src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1&origin=http://example.com`}
         frameBorder='0'
+        autoplay='1'
       ></iframe>
     </div>
   );
