@@ -4,7 +4,6 @@ import { getPageContent } from '../redux/slices/contentSlice';
 
 const Video = () => {
   const video = useSelector(getPageContent).content.data;
-  console.log(video);
 
   return (
     <div className='video-wrapper'>
@@ -16,7 +15,7 @@ const Video = () => {
         height='360'
         src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1&origin=http://example.com`}
         frameBorder='0'
-        autoplay='1'
+        allow='autoplay'
       ></iframe>
     </div>
   );

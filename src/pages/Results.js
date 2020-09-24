@@ -12,19 +12,19 @@ const Results = (props) => {
 
   useEffect(() => {
     if (!pageContent.content.data) return;
-    // axios
-    //   .get('https://www.googleapis.com/youtube/v3/search', {
-    //     params: {
-    //       key: 'AIzaSyCKXbn-fL4CpKsPY4W4TZ3KVUTrh_5xE7c',
-    //       part: 'snippet',
-    //       type: 'video',
-    //       q: pageContent.content.data,
-    //     },
-    //   })
-    //   .then((res) => res)
-    //   .then((data) => setResultList(data.data.items));
+    axios
+      .get('https://www.googleapis.com/youtube/v3/search', {
+        params: {
+          key: process.env.REACT_APP_API_KEY,
+          part: 'snippet',
+          type: 'video',
+          q: pageContent.content.data,
+        },
+      })
+      .then((res) => res)
+      .then((data) => setResultList(data.data.items));
 
-    setResultList(mockResults().items);
+    // setResultList(mockResults().items);
   }, [pageContent]);
 
   const openVideo = (id) => {
