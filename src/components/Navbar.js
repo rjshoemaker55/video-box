@@ -4,17 +4,20 @@ import { setPageContent } from '../redux/slices/contentSlice';
 import { createUseStyles } from 'react-jss';
 
 const useStyles = createUseStyles({
+  //! Mobile Styling
   navbarWrapper: {
     display: 'flex',
     height: '56px',
     padding: '0 16px',
     backgroundColor: 'red',
+    flexWrap: 'wrap',
   },
   titleWrapper: {
     display: 'flex',
     justifyContent: 'center',
     flex: 1,
     alignItems: 'center',
+    flexBasis: '100%',
   },
   searchWrapper: {
     display: 'flex',
@@ -33,6 +36,20 @@ const useStyles = createUseStyles({
       marginLeft: 'auto',
     },
   },
+
+  //! Tablet Styling - 768px and above
+  '@media screen and (min-width: 768px)': {
+    titleWrapper: {
+      order: 2,
+      flexBasis: 0,
+    },
+    searchWrapper: {
+      order: 1,
+    },
+    repoWrapper: {
+      order: 3,
+    },
+  },
 });
 
 const Navbar = () => {
@@ -42,6 +59,9 @@ const Navbar = () => {
 
   return (
     <div className={classes.navbarWrapper}>
+      <div className={classes.titleWrapper}>
+        <div className={classes.titleText}>Videobox</div>
+      </div>
       <div className={classes.searchWrapper}>
         <form className={classes.searchForm}>
           <input
@@ -62,10 +82,6 @@ const Navbar = () => {
             Go
           </button>
         </form>
-      </div>
-
-      <div className={classes.titleWrapper}>
-        <div className={classes.titleText}>Videobox</div>
       </div>
       <div className={classes.repoWrapper}>
         <div className={classes.repoText}>Repo</div>
