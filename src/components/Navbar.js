@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageContent } from '../redux/slices/contentSlice';
 import { createUseStyles } from 'react-jss';
+import { colors } from '../utilities/colors';
+import githubLogo from '../images/github-logo-white.png';
 
 const useStyles = createUseStyles({
   //! Mobile Styling
   navbarWrapper: {
     display: 'flex',
-    height: '56px',
     padding: '0 16px',
-    backgroundColor: 'red',
+    backgroundColor: colors.darkBlue,
     flexWrap: 'wrap',
   },
   titleWrapper: {
@@ -18,23 +19,48 @@ const useStyles = createUseStyles({
     flex: 1,
     alignItems: 'center',
     flexBasis: '100%',
+    marginTop: '7px',
+  },
+  titleText: {
+    fontFamily: 'Berkshire Swash, cursive',
+    fontSize: '28px',
+    color: colors.lemon,
   },
   searchWrapper: {
     display: 'flex',
-    flex: 1,
+    flex: 3,
     alignItems: 'center',
-    '& searchForm': {
-      marginRight: 'auto',
-    },
+  },
+  searchForm: {
+    width: '100%',
+  },
+  searchBar: {
+    width: '75%',
+    margin: '7px 0',
+    border: 'none',
+    backgroundColor: 'transparent',
+    borderBottom: '2px white solid',
+    fontWeight: 'bold',
+    height: '20px',
+    color: colors.lemon,
+  },
+  searchButton: {
+    width: '20%',
+    height: '24px',
+    border: '2px solid white',
+    backgroundColor: 'transparent',
+    color: 'white',
+    fontWeight: 'bold',
   },
   repoWrapper: {
     display: 'flex',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
-    '& repoText': {
-      marginLeft: 'auto',
-    },
+  },
+  repoLogo: {
+    width: '30%',
+    display: 'table',
   },
 
   //! Tablet Styling - 768px and above
@@ -60,7 +86,7 @@ const Navbar = () => {
   return (
     <div className={classes.navbarWrapper}>
       <div className={classes.titleWrapper}>
-        <div className={classes.titleText}>Videobox</div>
+        <div className={classes.titleText}>videobox</div>
       </div>
       <div className={classes.searchWrapper}>
         <form className={classes.searchForm}>
@@ -79,12 +105,12 @@ const Navbar = () => {
             }
             type='submit'
           >
-            Go
+            go
           </button>
         </form>
       </div>
       <div className={classes.repoWrapper}>
-        <div className={classes.repoText}>Repo</div>
+        <img className={classes.repoLogo} src={githubLogo} />
       </div>
     </div>
   );
