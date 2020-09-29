@@ -33,10 +33,10 @@ const useStyles = createUseStyles({
   },
   searchForm: {
     width: '100%',
+    margin: '7px 0',
   },
   searchBar: {
     width: '75%',
-    margin: '7px 0',
     border: 'none',
     backgroundColor: 'transparent',
     borderBottom: '2px white solid',
@@ -65,15 +65,32 @@ const useStyles = createUseStyles({
 
   //! Tablet Styling - 768px and above
   '@media screen and (min-width: 768px)': {
+    titleText: {
+      fontSize: '40px',
+      lineHeight: 1,
+    },
     titleWrapper: {
       order: 2,
       flexBasis: 0,
+      margin: '10px 0',
+      flex: 1,
     },
     searchWrapper: {
       order: 1,
+      flex: 1,
+    },
+    searchWrapper: {
+      flex: 2,
     },
     repoWrapper: {
       order: 3,
+      justifyContent: 'flex-end',
+      flex: '.2',
+    },
+    repoLogo: {
+      height: '35px',
+      width: '35px',
+      padding: '5px',
     },
   },
 });
