@@ -5,4 +5,5 @@ export const colors = {
   lightPurple: '#4B2A57',
   darkPurple: '#341C3A',
   lemon: '#fff6BD',
+  marroon: '#391306',
 };

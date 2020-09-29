@@ -42,17 +42,17 @@ const useStyles = createUseStyles({
     borderBottom: '2px white solid',
     fontWeight: 'bold',
     height: '20px',
-    fontSize: '20px',
+    fontSize: '15px',
     color: colors.lemon,
   },
   searchButton: {
-    width: '20%',
-    height: '26px',
+    width: '17%',
+    height: '24px',
     border: '2px solid white',
     backgroundColor: 'transparent',
     color: 'white',
     fontWeight: 'bold',
-    fontSize: '20px',
+    fontSize: '15px',
   },
   repoWrapper: {
     display: 'flex',
@@ -75,7 +75,7 @@ const useStyles = createUseStyles({
       order: 2,
       flexBasis: 0,
       margin: '10px 0',
-      flex: 1,
+      flex: 1.5,
     },
     searchWrapper: {
       order: 1,
@@ -94,8 +94,14 @@ const useStyles = createUseStyles({
       width: '35px',
       padding: '5px',
     },
+    searchBar: {
+      fontSize: '20px',
+      width: '90%',
+    },
     searchButton: {
       width: '10%',
+      fontSize: '20px',
+      height: '26px',
     },
   },
 });
@@ -120,11 +126,12 @@ const Navbar = () => {
           />
           <button
             className={classes.searchButton}
-            onClick={() =>
+            onClick={(e) => {
+              e.preventDefault();
               dispatch(
                 setPageContent({ component: 'Results', data: searchQuery })
-              )
-            }
+              );
+            }}
             type='submit'
           >
             go
