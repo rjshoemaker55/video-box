@@ -42,15 +42,17 @@ const useStyles = createUseStyles({
     borderBottom: '2px white solid',
     fontWeight: 'bold',
     height: '20px',
+    fontSize: '20px',
     color: colors.lemon,
   },
   searchButton: {
     width: '20%',
-    height: '24px',
+    height: '26px',
     border: '2px solid white',
     backgroundColor: 'transparent',
     color: 'white',
     fontWeight: 'bold',
+    fontSize: '20px',
   },
   repoWrapper: {
     display: 'flex',
@@ -91,6 +93,9 @@ const useStyles = createUseStyles({
       height: '35px',
       width: '35px',
       padding: '5px',
+    },
+    searchButton: {
+      width: '10%',
     },
   },
 });
