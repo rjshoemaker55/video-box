@@ -8,7 +8,7 @@ const useStyles = createUseStyles({
   videoWrapper: {
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: colors.marroon,
+    backgroundColor: 'black',
     width: '100%',
   },
 });
@@ -17,18 +17,25 @@ const Video = () => {
   const video = useSelector(getPageContent).content.data;
   const classes = useStyles();
 
+  let width = window.innerWidth;
+  let height = window.innerHeight;
+
   return (
     <div className={classes.videoWrapper}>
       <iframe
         title='Youtube'
         id='ytplayer'
         type='text/html'
-        width='640'
-        height='570'
+        width={width}
+        // height={(width / 16) * 9}
         src={`https://www.youtube.com/embed/${video.id.videoId}?autoplay=1&origin=http://example.com`}
         frameBorder='0'
         allow='autoplay'
-        width='1200px'
+        allowfullscreen='allowfullscreen'
+        mozallowfullscreen='mozallowfullscreen'
+        msallowfullscreen='msallowfullscreen'
+        oallowfullscreen='oallowfullscreen'
+        webkitallowfullscreen='webkitallowfullscreen'
       ></iframe>
     </div>
   );
