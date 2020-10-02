@@ -61,7 +61,7 @@ const useStyles = createUseStyles({
   },
   repoWrapper: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
     flex: 1,
   },
@@ -144,7 +144,11 @@ const Navbar = () => {
         </form>
       </div>
       <div className={classes.repoWrapper}>
-        <a href='https://www.github.com/rjshoemaker55' target='_blank'>
+        <a
+          href='https://www.github.com/rjshoemaker55'
+          target='_blank'
+          styles={{ display: 'table' }}
+        >
           <img className={classes.repoLogo} src={githubLogo} />
         </a>
       </div>

@@ -1,14 +1,43 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { createUseStyles } from 'react-jss';
 import { getPageContent, setPageContent } from '../redux/slices/contentSlice';
 import { mockResults } from '../mockResults';
 import Result from '../components/Result';
+import { colors } from '../utilities/colors';
 const axios = require('axios');
+
+const useStyles = createUseStyles({
+  //! Mobile styling
+  resultsWrapper: {
+    display: 'grid',
+    gridTemplateColumns: '1fr',
+    gridGap: '5px',
+    padding: '5px',
+    backgroundColor: colors.marroon,
+  },
+  //! Tablet styling - 768px and above
+  '@media screen and (min-width: 768px) and (max-width: 991px)': {
+    resultsWrapper: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr 1fr',
+      gridGap: '5px',
+      padding: '5px',
+    },
+  },
+  //! Laptop/desktop styling - 992px and above
+  '@media screen and (min-width: 992px)': {
+    resultsWrapper: {
+      gridTemplateColumns: '1fr 1fr 1fr 1fr',
+    },
+  },
+});
 
 const Results = (props) => {
   const [resultList, setResultList] = useState([]);
   const pageContent = useSelector(getPageContent);
   const dispatch = useDispatch();
+  const classes = useStyles();
 
   useEffect(() => {
     if (!pageContent.content.data) return;
@@ -38,13 +67,13 @@ const Results = (props) => {
   };
 
   return (
-    <div className='results-wrapper'>
+    <div className={classes.resultsWrapper}>
       {resultList.map((result) => (
         <Result
           key={result.id.videoId}
           videoId={result.id.videoId}
           thumbnail={result.snippet.thumbnails.default}
-          channelTile={result.snippet.channelTile}
+          channelTitle={result.snippet.channelTitle}
           title={result.snippet.title}
           openVideo={openVideo}
         />
