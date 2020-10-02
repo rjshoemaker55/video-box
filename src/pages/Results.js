@@ -19,6 +19,7 @@ const Results = (props) => {
           part: 'snippet',
           type: 'video',
           q: pageContent.content.data,
+          maxResults: 25,
         },
       })
       .then((res) => res)

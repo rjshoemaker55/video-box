@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageContent } from '../redux/slices/contentSlice';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, withTheme } from 'react-jss';
 import { colors } from '../utilities/colors';
 import githubLogo from '../images/github-logo-white.png';
 
@@ -53,6 +53,11 @@ const useStyles = createUseStyles({
     color: 'white',
     fontWeight: 'bold',
     fontSize: '15px',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'black',
+      cursor: 'pointer',
+    },
   },
   repoWrapper: {
     display: 'flex',
@@ -139,7 +144,9 @@ const Navbar = () => {
         </form>
       </div>
       <div className={classes.repoWrapper}>
-        <img className={classes.repoLogo} src={githubLogo} />
+        <a href='https://www.github.com/rjshoemaker55' target='_blank'>
+          <img className={classes.repoLogo} src={githubLogo} />
+        </a>
       </div>
     </div>
   );
